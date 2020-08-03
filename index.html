@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Used Cars</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search-options-container">
+        <select name="brand" id="brand">
+          <option value="all">All Brands</option>
+          <option value="abarth">Abarth</option>
+          <option value="audi">Audi</option>
+          <option value="bmw">BMW</option>
+          <option value="ford">Ford</option>
+          <option value="hyundai">Hyundai</option>
+          <option value="land rover">Land Rover</option>
+          <option value="mercedes benz">Mercedes Benz</option>
+          <option value="mitsubishi">Mitsubishi</option>
+          <option value="nissan">Nissan</option>
+          <option value="opel">Opel</option>
+          <option value="renault">Renault</option>
+          <option value="volkswagen">Volkswagen</option>
+        </select>
+
+        <div class="price-range">
+          <input
+            type="number"
+            name="min-price"
+            id="min-price"
+            min="0"
+            placeholder="Min Price (€)"
+          />
+          <input
+            type="number"
+            name="max-price"
+            id="max-price"
+            placeholder="Max Price (€)"
+          />
+        </div>
+
+        <div class="fuel-type">
+          <select name="fuel" id="fuel">
+            <option value="any-fuel">Any Fuel</option>
+            <option value="diesel">Diesel</option>
+            <option value="petrol">Petrol</option>
+          </select>
+        </div>
+
+        <div class="select-year-range">
+          <select name="lower-year" id="lower-year">
+            <option value="any-year">Any Year</option>
+            <option value="2020">2020</option>
+            <option value="2015">2015</option>
+            <option value="2010">2010</option>
+            <option value="2005">2005</option>
+            <option value="2000">2000</option>
+            <option value="1995">1995</option>
+            <option value="1990">1990</option>
+            <option value="1985">1985</option>
+            <option value="1980">1980</option>
+          </select>
+
+          <select name="higher-year" id="higher-year">
+            <option value="any-year">Any Year</option>
+            <option value="2020">2020</option>
+            <option value="2015">2015</option>
+            <option value="2010">2010</option>
+            <option value="2005">2005</option>
+            <option value="2000">2000</option>
+            <option value="1995">1995</option>
+            <option value="1990">1990</option>
+            <option value="1985">1985</option>
+            <option value="1980">1980</option>
+          </select>
+        </div>
+
+        <button id="search-btn" onclick="searchConfirm()">
+          <img src="./img/search-icon.png" id="search-icon" alt="" /> Search
+        </button>
+      </div>
+
+      <div class="ad-video-container">
+        <h1 class="ad-title">Enjoy Your Drive.</h1>
+        <video src="./img/ad-video1.mp4" class="ad-video" loop autoplay></video>
+        <span class="advertiser">Ads by DriveSafe</span>
+      </div>
+
+      <div class="large-ad-container">
+        <span class="slider-arrow" id="slide-left"></span>
+        <div class="ad-img-slider">
+          <img class="ad-img" src="./img/ad-img/ad-mercedes1.jpg" alt="" />
+          <img class="ad-img" src="./img/ad-img/ad-audi1.jpg" alt="" />
+          <img class="ad-img" src="./img/ad-img/ad-bmw1.jpg" alt="" />
+          <img class="ad-img" src="./img/ad-img/ad-renault1.jpg" alt="" />
+          <img class="ad-img" src="./img/ad-img/ad-ford1.jpg" alt="" />
+        </div>
+        <span class="slider-arrow" id="slide-right"></span>
+        <div class="slider-dots">
+          <span class="dot dot-active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="car-list-container">
+        <!-- Car Container Sample -->
+        <!-- <div class="car-container">
+          <img src="./img/abarth1.jpg" alt="Abarth" class="car-image" />
+          <div class="car-description-container">
+            <h2 class="car-title">
+              <span class="car-brand">Abarth</span>
+              <span class="car-model">500</span>
+            </h2>
+            <span class="price-container"
+              ><span class="car-price">$12850</span></span
+            >
+            <ul class="car-info">
+              <li class="car-year">Year: 2013.</li>
+              <li class="car-fuel">Fuel: Petrol</li>
+              <li>Kilometers: 84800 km</li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="modal-overlay">
+        <!-- <div class="modal-container">
+        <button id="modal-close"></button>
+        <div class="modal-content">
+          <div class="modal-main">
+            <h1 class="modal-title">Abarth 500</h1>
+            <img src="./img/abarth1.jpg" alt="" class="modal-img" />
+          </div>
+
+          <div class="modal-info">
+            <span class="modal-price">Price: $12500</span>
+            <span class="modal-year">Year: 2019.</span>
+            <span class="modal-fuel">Fuel: Diesel</span>
+            <span class="modal-kilometers">Kilometers: 112000km</span>
+          </div>
+          <p class="modal-description">
+            <span class="modal-description-title">About</span>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+            iste quasi saepe, illum ullam libero consectetur sapiente, quod,
+            temporibus amet laborum ipsa minima assumenda unde dolore! Culpa
+            quis voluptatem inventore expedita quas nesciunt.
+          </p>
+        </div>
+      </div> -->
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
