@@ -205,12 +205,42 @@ const carList = document.querySelector(".car-list-container");
 
 // Use carData const to create new elements
 
+// Multiple Pages - Create max 10 Elements on Each Page
+
+const nextBtn = document.querySelector("#next-btn");
+const prevBtn = document.querySelector("#prev-btn");
+
+let lowerNum = 0;
+let higherNum = 10;
+
+nextBtn.addEventListener("click", () => {
+  if (higherNum >= carData.length) {
+    return;
+  } else {
+    document.querySelector(".car-list-container").innerHTML = ``;
+    lowerNum += 10;
+    higherNum += 10;
+    createCarContainer();
+  }
+});
+prevBtn.addEventListener("click", () => {
+  if (lowerNum < 10) {
+    return;
+  } else {
+    document.querySelector(".car-list-container").innerHTML = ``;
+    lowerNum -= 10;
+    higherNum -= 10;
+    createCarContainer();
+  }
+});
+
 function createCarContainer() {
-  for (let i = 0; i < carData.length; i++) {
+  for (let i = lowerNum; i < higherNum; i++) {
     let newCarContainer = document.createElement("div");
     newCarContainer.classList.add("car-container");
 
     newCarContainer.innerHTML += `
+
         <img src="${carData[i].img}" alt="Abarth" class="car-image" />
           <div class="car-description-container">
             <h2 class="car-title">
@@ -230,6 +260,18 @@ function createCarContainer() {
     `;
 
     carList.appendChild(newCarContainer);
+
+    // Display Range of Cars on the Screen
+
+    const pageRange = document.querySelector("#page-range");
+    let showHigherRange;
+    higherNum > carData.length
+      ? (showHigherRange = carData.length)
+      : (showHigherRange = higherNum);
+
+    pageRange.textContent = `Showing ${lowerNum + 1} - ${showHigherRange}  of ${
+      carData.length
+    } `;
   }
 }
 
@@ -339,6 +381,16 @@ function chooseYear() {
   });
 }
 
+// Fix Display Settings
+
+function displaySettings() {
+  // Enable Scroll
+  document.querySelector("body").style.overflowY = "scroll";
+
+  // Show Page Buttons
+  document.querySelector(".page-buttons").style.display = "flex";
+}
+
 // Confirm Button Click
 
 function searchConfirm() {
@@ -347,7 +399,7 @@ function searchConfirm() {
   chooseFuel();
   priceRange();
   chooseYear();
-  document.querySelector("body").style.overflowY = "scroll";
+  displaySettings();
 }
 
 // Ad Video Settings
@@ -363,7 +415,7 @@ const adVideoContainer = document.querySelector(".ad-video-container");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY < 200) {
-    adVideoContainer.style.top = "75vh";
+    adVideoContainer.style.top = "80vh";
   } else {
     adVideoContainer.style.top = "50vh";
   }

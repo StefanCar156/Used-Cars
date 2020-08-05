@@ -135,7 +135,7 @@ body {
 /* Ad Container */
 .ad-video-container {
   position: fixed;
-  top: 75vh;
+  top: 80vh;
   transform: translateY(-50%);
   left: 50px;
   display: none;
@@ -326,4 +326,39 @@ body {
 
 .modal-closed {
   display: none;
+}
+
+/* Multiple Pages */
+
+.page-buttons {
+  display: none;
+  margin: 30px 0 0 0;
+  justify-content: center;
+  user-select: none;
+}
+
+.page-buttons button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+#prev-btn {
+  background: url("./img/prev-page.png");
+  background-size: cover;
+}
+#next-btn {
+  background: url("./img/next-page.png");
+  background-size: cover;
+}
+
+#page-range {
+  font-size: 22px;
+  font-weight: 600;
+  height: 30px;
+  display: flex;
+  padding: 5px 15px;
 }
