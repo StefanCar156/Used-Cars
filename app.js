@@ -205,37 +205,8 @@ const carList = document.querySelector(".car-list-container");
 
 // Use carData const to create new elements
 
-// Multiple Pages - Create max 10 Elements on Each Page
-
-const nextBtn = document.querySelector("#next-btn");
-const prevBtn = document.querySelector("#prev-btn");
-
-let lowerNum = 0;
-let higherNum = 10;
-
-nextBtn.addEventListener("click", () => {
-  if (higherNum >= carData.length) {
-    return;
-  } else {
-    document.querySelector(".car-list-container").innerHTML = ``;
-    lowerNum += 10;
-    higherNum += 10;
-    createCarContainer();
-  }
-});
-prevBtn.addEventListener("click", () => {
-  if (lowerNum < 10) {
-    return;
-  } else {
-    document.querySelector(".car-list-container").innerHTML = ``;
-    lowerNum -= 10;
-    higherNum -= 10;
-    createCarContainer();
-  }
-});
-
 function createCarContainer() {
-  for (let i = lowerNum; i < higherNum; i++) {
+  for (let i = 0; i < carData.length; i++) {
     let newCarContainer = document.createElement("div");
     newCarContainer.classList.add("car-container");
 
@@ -260,18 +231,6 @@ function createCarContainer() {
     `;
 
     carList.appendChild(newCarContainer);
-
-    // Display Range of Cars on the Screen
-
-    const pageRange = document.querySelector("#page-range");
-    let showHigherRange;
-    higherNum > carData.length
-      ? (showHigherRange = carData.length)
-      : (showHigherRange = higherNum);
-
-    pageRange.textContent = `Showing ${lowerNum + 1} - ${showHigherRange}  of ${
-      carData.length
-    } `;
   }
 }
 
@@ -400,6 +359,7 @@ function searchConfirm() {
   priceRange();
   chooseYear();
   displaySettings();
+  createCarContainer();
 }
 
 // Ad Video Settings
