@@ -212,21 +212,22 @@ function createCarContainer() {
 
     newCarContainer.innerHTML += `
 
-        <img src="${carData[i].img}" alt="Abarth" class="car-image" />
+        <img src="${carData[i].img}" alt="Car Image" class="car-image" />
           <div class="car-description-container">
             <h2 class="car-title">
               <span class="car-brand">${carData[i].brand}</span>
               <span class="car-model">${carData[i].model}</span>
             </h2>
-            <span class="price-container"
-              ><span class="car-price">${carData[i].price}</span></span
-            >
+            
             <ul class="car-info">
               <li class="car-year">Year: ${carData[i].year}</li>
               <li class="car-fuel">Fuel: ${carData[i].fuel}</li>
               <li>Kilometers: ${carData[i].kilometers}</li>
             </ul>
           </div>
+          <span class="price-container"
+              ><span class="car-price">${carData[i].price}</span></span
+            >
     
     `;
 
@@ -340,26 +341,23 @@ function chooseYear() {
   });
 }
 
-// Fix Display Settings
+// function removeAll() {
+//   let removeCounter = carList.childNodes.length;
 
-function displaySettings() {
-  // Enable Scroll
-  document.querySelector("body").style.overflowY = "scroll";
-
-  // Show Page Buttons
-  document.querySelector(".page-buttons").style.display = "flex";
-}
+//   for (let i = 0; i < removeCounter; i++) {
+//     carList.children[i].remove();
+//   }
+// }
 
 // Confirm Button Click
 
 function searchConfirm() {
+  // removeAll();
   showAll();
   changeBrand();
   chooseFuel();
   priceRange();
   chooseYear();
-  displaySettings();
-  createCarContainer();
 }
 
 // Ad Video Settings
@@ -372,14 +370,6 @@ const adVideoList = [
 ];
 
 const adVideoContainer = document.querySelector(".ad-video-container");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY < 200) {
-    adVideoContainer.style.top = "80vh";
-  } else {
-    adVideoContainer.style.top = "50vh";
-  }
-});
 
 let adIterator = 0;
 
@@ -441,29 +431,30 @@ function createModal(e) {
   const targetContainer = e.target;
 
   newModal.innerHTML = `
-  <button id="modal-close"></button>
-  <div class="modal-content">
-    <div class="modal-main">
-      <h1 class="modal-title">${targetContainer.children[1].children[0].children[0].textContent}
-       ${targetContainer.children[1].children[0].children[1].textContent}</h1>
-      <img src="${targetContainer.children[0].src}" alt="${targetContainer.children[1].children[0].children[0].textContent}" class="modal-img" />
-    </div>
+   <button id="modal-close"></button>
+   <div class="modal-content">
+     <div class="modal-main">
+       <h1 class="modal-title">${targetContainer.children[1].children[0].children[0].textContent}
+        ${targetContainer.children[1].children[0].children[1].textContent}</h1>
+       <img src="${targetContainer.children[0].src}" alt="${targetContainer.children[1].children[0].children[0].textContent}" class="modal-img" />
+     </div>
 
-    <div class="modal-info">
-      <span class="modal-price">Price: ${targetContainer.children[1].children[1].children[0].textContent}</span>
-      <span class="modal-year">${targetContainer.children[1].children[2].children[0].textContent}</span>
-      <span class="modal-fuel">${targetContainer.children[1].children[2].children[1].textContent}</span>
-      <span class="modal-kilometers">${targetContainer.children[1].children[2].children[2].textContent}</span>
-    </div>
-    <p class="modal-description">
-      <span class="modal-description-title">About</span>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
-      iste quasi saepe, illum ullam libero consectetur sapiente, quod,
-      temporibus amet laborum ipsa minima assumenda unde dolore! Culpa
-      quis voluptatem inventore expedita quas nesciunt.
-    </p>
-  </div>
-  `;
+     <div class="modal-info">
+       <span class="modal-price">Price: ${targetContainer.children[2].children[0].textContent}</span>
+       <span class="modal-year">${targetContainer.children[1].children[1].children[0].textContent}</span>
+       <span class="modal-fuel">${targetContainer.children[1].children[1].children[1].textContent}</span>
+       <span class="modal-kilometers">${targetContainer.children[1].children[1].children[2].textContent}</span>
+     </div>
+     <p class="modal-description">
+       <span class="modal-description-title">About</span>
+       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
+       iste quasi saepe, illum ullam libero consectetur sapiente, quod,
+       temporibus amet laborum ipsa minima assumenda unde dolore! Culpa
+       quis voluptatem inventore expedita quas nesciunt.
+     </p>
+   </div>
+
+   `;
 
   // Darken the background and open modal
 
@@ -489,3 +480,21 @@ openModalTrigger.forEach((trigger) => {
     createModal(e);
   });
 });
+
+// Small Resolution Ad Slider
+const imageSlider = document.querySelector(".ad-img-slider");
+
+function changeAdImg() {
+  if (window.innerWidth < 1100) {
+    let randomNum = Math.round(Math.random() * 4);
+    imageSlider.children[0].src = imageSlider.children[randomNum].src;
+  }
+}
+
+window.onresize = () => {
+  if (window.innerWidth > 1100) {
+    imageSlider.children[0].src = "../img/ad-img/ad-mercedes1.jpg";
+  }
+};
+
+setInterval(changeAdImg, 3000);

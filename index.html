@@ -82,14 +82,26 @@
         </button>
       </div>
 
-      <div class="ad-video-container">
-        <h1 class="ad-title">Enjoy Your Drive.</h1>
-        <video src="./img/ad-video1.mp4" class="ad-video" loop autoplay></video>
-        <span class="advertiser">Ads by DriveSafe</span>
-      </div>
+      <main>
+        <div class="ad-video-container">
+          <h1 class="ad-title">Enjoy Your Drive.</h1>
+          <video
+            src="./img/ad-video1.mp4"
+            class="ad-video"
+            loop
+            autoplay
+          ></video>
+          <span class="advertiser">Ads by DriveSafe</span>
+        </div>
+
+        <div class="car-list-container"></div>
+      </main>
 
       <div class="large-ad-container">
-        <span class="slider-arrow" id="slide-left"></span>
+        <div class="slider-arrows-container">
+          <span class="slider-arrow" id="slide-left"></span>
+          <span class="slider-arrow" id="slide-right"></span>
+        </div>
         <div class="ad-img-slider">
           <img class="ad-img" src="./img/ad-img/ad-mercedes1.jpg" alt="" />
           <img class="ad-img" src="./img/ad-img/ad-audi1.jpg" alt="" />
@@ -97,7 +109,7 @@
           <img class="ad-img" src="./img/ad-img/ad-renault1.jpg" alt="" />
           <img class="ad-img" src="./img/ad-img/ad-ford1.jpg" alt="" />
         </div>
-        <span class="slider-arrow" id="slide-right"></span>
+
         <div class="slider-dots">
           <span class="dot dot-active"></span>
           <span class="dot"></span>
@@ -107,53 +119,7 @@
         </div>
       </div>
 
-      <div class="car-list-container">
-        <!-- Car Container Sample -->
-        <!-- <div class="car-container">
-          <img src="./img/abarth1.jpg" alt="Abarth" class="car-image" />
-          <div class="car-description-container">
-            <h2 class="car-title">
-              <span class="car-brand">Abarth</span>
-              <span class="car-model">500</span>
-            </h2>
-            <span class="price-container"
-              ><span class="car-price">$12850</span></span
-            >
-            <ul class="car-info">
-              <li class="car-year">Year: 2013.</li>
-              <li class="car-fuel">Fuel: Petrol</li>
-              <li>Kilometers: 84800 km</li>
-            </ul>
-          </div>
-        </div> -->
-      </div>
-
-      <div class="modal-overlay">
-        <!-- Modal Sample -->
-        <!-- <div class="modal-container">
-        <button id="modal-close"></button>
-        <div class="modal-content">
-          <div class="modal-main">
-            <h1 class="modal-title">Abarth 500</h1>
-            <img src="./img/abarth1.jpg" alt="" class="modal-img" />
-          </div>
-
-          <div class="modal-info">
-            <span class="modal-price">Price: $12500</span>
-            <span class="modal-year">Year: 2019.</span>
-            <span class="modal-fuel">Fuel: Diesel</span>
-            <span class="modal-kilometers">Kilometers: 112000km</span>
-          </div>
-          <p class="modal-description">
-            <span class="modal-description-title">About</span>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam
-            iste quasi saepe, illum ullam libero consectetur sapiente, quod,
-            temporibus amet laborum ipsa minima assumenda unde dolore! Culpa
-            quis voluptatem inventore expedita quas nesciunt.
-          </p>
-        </div>
-      </div> -->
-      </div>
+      <div class="modal-overlay"></div>
     </div>
 
     <script src="./app.js"></script>
