@@ -176,6 +176,7 @@ main {
   align-items: center;
   display: flex;
   overflow: hidden;
+  position: relative;
 }
 
 .ad-img-slider {
@@ -202,7 +203,8 @@ main {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  left: 20vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .slider-arrow {
@@ -227,7 +229,7 @@ main {
 .slider-dots {
   display: flex;
   position: absolute;
-  bottom: 80px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
@@ -262,14 +264,25 @@ main {
 
 .modal-container {
   position: fixed;
-  top: 10vh;
-  left: 20vw;
-  max-width: 70vw;
-  min-width: 60vw;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+  min-width: 450px;
   min-height: 80vh;
   background-color: rgb(206, 206, 206);
   border-radius: 50px;
   padding: 40px;
+  animation: modalopen 1s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
@@ -405,10 +418,8 @@ main {
     font-size: 18px;
   }
 
-  .modal-container {
-    top: 0;
-    left: 10vw;
-    padding: 40px 10px;
+  .car-price {
+    font-size: 18px;
   }
 
   .modal-close {
@@ -426,7 +437,7 @@ main {
   }
 
   .modal-img {
-    min-width: 200px;
+    min-width: 250px;
   }
 
   .modal-price {

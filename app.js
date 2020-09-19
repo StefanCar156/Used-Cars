@@ -270,8 +270,6 @@ function displayBrands() {
     .sort()
     .join("");
 
-  console.log(brandOptions);
-
   document.querySelector("#brand").innerHTML = brandOptions;
 }
 
@@ -307,18 +305,15 @@ function priceRange() {
   let carPrices = document.querySelectorAll(".car-price");
 
   // If input fields are left blank, set some default value
-
-  minPriceValue == "" ? (minPriceValue = 0) : minPriceValue;
-
-  maxPriceValue == "" ? (maxPriceValue = 999999) : maxPriceValue;
-
+  minPriceValue == "" ? (minPriceValue = 0) : parseInt(minPriceValue);
+  maxPriceValue == "" ? (maxPriceValue = 999999) : parseInt(maxPriceValue);
   // Filter cars by price
 
   carPrices.forEach((price) => {
     let soloPrice = parseInt(price.textContent.replace("$", ""));
 
     if (soloPrice < minPriceValue || soloPrice > maxPriceValue) {
-      price.parentElement.parentElement.parentElement.style.display = "none";
+      price.parentElement.parentElement.style.display = "none";
     }
   });
 }
@@ -355,6 +350,7 @@ function chooseYear() {
     // Check if Lower Year is NOT Lower, and then make it equal
     if (lowerYear > higherYear) {
       higherYear = lowerYear;
+      document.querySelector("#higher-year").value = lowerYear;
     }
 
     // Leave Only Cars Between Selected Years
@@ -375,8 +371,8 @@ function searchConfirm() {
   showAll();
   changeBrand();
   chooseFuel();
-  priceRange();
   chooseYear();
+  priceRange();
 }
 
 // Ad Video Settings
@@ -439,6 +435,27 @@ sliderArrowLeft.addEventListener("click", () => {
   sliderDots[sliderIterator].classList.add("dot-active");
 });
 
+// Small Resolution Ad Slider
+const imageSlider = document.querySelector(".ad-img-slider");
+
+function changeAdImg() {
+  if (window.innerWidth < 1100) {
+    adImages.forEach((image) => {
+      image.style.transform = "translateX(0)";
+    });
+    let randomNum = Math.round(Math.random() * 4);
+    imageSlider.children[0].src = imageSlider.children[randomNum].src;
+  }
+}
+
+window.onresize = () => {
+  if (window.innerWidth > 1100) {
+    imageSlider.children[0].src = "../img/ad-img/ad-mercedes1.jpg";
+  }
+};
+
+setInterval(changeAdImg, 3000);
+
 // Modal Container
 
 // Create Modal and use variables in it
@@ -499,21 +516,3 @@ openModalTrigger.forEach((trigger) => {
     createModal(e);
   });
 });
-
-// Small Resolution Ad Slider
-const imageSlider = document.querySelector(".ad-img-slider");
-
-function changeAdImg() {
-  if (window.innerWidth < 1100) {
-    let randomNum = Math.round(Math.random() * 4);
-    imageSlider.children[0].src = imageSlider.children[randomNum].src;
-  }
-}
-
-window.onresize = () => {
-  if (window.innerWidth > 1100) {
-    imageSlider.children[0].src = "../img/ad-img/ad-mercedes1.jpg";
-  }
-};
-
-setInterval(changeAdImg, 3000);
