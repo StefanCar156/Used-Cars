@@ -249,16 +249,44 @@ function showAll() {
     container.style.display = "flex";
   });
 }
+
+// Add Brand options
+
+function displayBrands() {
+  const brands = carData.reduce(
+    function (values, option) {
+      if (!values.includes(option.brand)) {
+        values.push(option.brand);
+      }
+      return values;
+    },
+    ["--All Brands--"]
+  );
+
+  const brandOptions = brands
+    .map((brand) => {
+      return `<option value="${brand}">${brand}</option>`;
+    })
+    .sort()
+    .join("");
+
+  console.log(brandOptions);
+
+  document.querySelector("#brand").innerHTML = brandOptions;
+}
+
+displayBrands();
+
 // Select Brand
 
 function changeBrand() {
   const brandSelect = document.querySelector("#brand");
   const allTitles = document.querySelectorAll(".car-brand");
-  let selectedBrand = brandSelect.value;
+  let selectedBrand = brandSelect.value.toLowerCase();
 
   // If all brands are selected, display all cars
 
-  if (selectedBrand == "all") {
+  if (selectedBrand == "--all brands--") {
     return;
   }
 
@@ -341,18 +369,9 @@ function chooseYear() {
   });
 }
 
-// function removeAll() {
-//   let removeCounter = carList.childNodes.length;
-
-//   for (let i = 0; i < removeCounter; i++) {
-//     carList.children[i].remove();
-//   }
-// }
-
 // Confirm Button Click
 
 function searchConfirm() {
-  // removeAll();
   showAll();
   changeBrand();
   chooseFuel();
